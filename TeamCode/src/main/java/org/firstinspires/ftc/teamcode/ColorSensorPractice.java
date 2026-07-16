@@ -7,21 +7,17 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.mechanisms.TestBench;
 @Disabled
 @TeleOp
-public class DistanceSensorPractice extends OpMode {
-    double distance;
-    TestBench bench = new TestBench();
+public class ColorSensorPractice extends OpMode {
+        TestBench bench = new TestBench();
+        TestBench.DectectedColor dectectedColor;
     @Override
     public void init() {
-        bench.init(hardwareMap);
+       bench.init(hardwareMap);
     }
 
     @Override
     public void loop() {
-        telemetry.addData("Distance", bench.getDistance());
-
-
-        if (distance < 10) {
-            telemetry.addLine("Too Close");
-        }
+       dectectedColor = bench.getDetectedColor(telemetry);
+       telemetry.addData("Color Detected", dectectedColor);
     }
 }
